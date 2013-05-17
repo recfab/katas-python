@@ -23,3 +23,14 @@ Feature: Addition
     | 0     | 0      | 0   |
     | 1     | 1      | 2   |
     | 1     | 2      | 3   |
+
+  Scenario Outline: Unknown Amount of Numbers
+    Given the input of "<input>"
+     then the sum should be <sum>
+     
+   Examples:
+    | input       | sum |
+    | 1,1,1       | 3   |
+    | 1,2,3       | 6   |
+    | 0,0,0,0     | 0   |
+    | 0,1,2,5,1,3 | 12  |
