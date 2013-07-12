@@ -7,7 +7,12 @@ def step(context):
     
 @given(u'the input of "{input}"')
 def step(context, input):
-    context.input = input
+    # convert text that looks like escape sequences in the .feature file into actual escape sequences
+    # only handle the sequences that the system under test actually expects
+    
+    prepd = input.replace('\\n', '\n')
+    
+    context.input = prepd
 
 @then(u'the sum should be {sum}')
 def step(context, sum):

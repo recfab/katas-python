@@ -34,3 +34,12 @@ Feature: Addition
     | 1,2,3       | 6   |
     | 0,0,0,0     | 0   |
     | 0,1,2,5,1,3 | 12  |
+
+  Scenario Outline: Allow newlines as delimiters
+    Given the input of "<input>"
+     then the sum should be <sum>
+
+   Examples:
+    | input   | sum |
+    | 1\n2,3  | 6   | 
+    | 1\n2\n5 | 8   | 
