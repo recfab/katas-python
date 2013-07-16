@@ -3,11 +3,11 @@ Feature: Addition
   Scenario: Empty string
     Given the input of empty string
      then the sum should be 0
-    
+
   Scenario Outline: One number
     Given the input of "<number>"
      then the sum should be <number>
-     
+
    Examples:
     | number |
     | 0      |
@@ -27,7 +27,7 @@ Feature: Addition
   Scenario Outline: Unknown Amount of Numbers
     Given the input of "<input>"
      then the sum should be <sum>
-     
+
    Examples:
     | input       | sum |
     | 1,1,1       | 3   |
@@ -41,5 +41,14 @@ Feature: Addition
 
    Examples:
     | input   | sum |
-    | 1\n2,3  | 6   | 
-    | 1\n2\n5 | 8   | 
+    | 1\n2,3  | 6   |
+    | 1\n2\n5 | 8   |
+
+  Scenario Outline: Specify delimiter in input
+    Given the input of "<input>"
+     then the sum should be <sum>
+
+   Examples:
+    | input        | sum |
+    | //;\n1;2     | 3   |
+    | //x\n3x4x14  | 21  |
