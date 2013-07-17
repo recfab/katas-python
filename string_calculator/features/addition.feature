@@ -52,3 +52,13 @@ Feature: Addition
     | input        | sum |
     | //;\n1;2     | 3   |
     | //x\n3x4x14  | 21  |
+
+  Scenario Outline: Disallow negative numbers
+    Given the input of "<input>"
+     then an error shall be raised with a message containing "<negatives>"
+    
+   Examples:
+    | input            | negatives |
+    | -1               | -1        |
+    | 1,2,3,-1,4       | -1        |
+    | 1,-2,3,-3,5,-6,1 | -2,-3,-6  |

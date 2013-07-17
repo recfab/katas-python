@@ -14,5 +14,9 @@ def add(input):
     pat = "|".join(delims)
 
     nums = [int(n) for n in re.split(pat, nums_part)]
+    
+    negs = [n for n in nums if n < 0]
+    if len(negs) > 0:
+        raise ValueError("Negatives not allowed: " + str(negs))
 
     return sum(nums)
