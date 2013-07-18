@@ -13,7 +13,7 @@ def add(input):
 
     pat = "|".join(delims)
 
-    nums = [int(n) for n in re.split(pat, nums_part)]
+    nums = [n for n in [int(ns) for ns in re.split(pat, nums_part)] if n <= 1000]
     
     negs = [n for n in nums if n < 0]
     if len(negs) > 0:

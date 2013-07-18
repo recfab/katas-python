@@ -62,3 +62,13 @@ Feature: Addition
     | -1               | -1        |
     | 1,2,3,-1,4       | -1        |
     | 1,-2,3,-3,5,-6,1 | -2,-3,-6  |
+
+  Scenario Outline: Ignore numbers larger than 1000
+    Given the input of "<input>"
+     then the sum should be <sum>
+
+   Examples:
+    | input  | sum  |
+    | 2,1000 | 1002 |
+    | 2,1001 | 2    |
+
