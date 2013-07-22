@@ -80,4 +80,13 @@ Feature: Addition
     | input              | sum  |
     | //[***]\n1***2***3 | 6    |
     | //[%%]\n1%%2%%4%%8 | 15   |
+
+  Scenario Outline: Multiple delimiters
+    Given the input of "<input>"
+     then the sum should be <sum>
+
+   Examples:
+    | input              | sum  |
+    | //[*][%]\n1*2%3    | 6    |
+    | //[%][x]\n1x2%4x8 | 15   |
     
