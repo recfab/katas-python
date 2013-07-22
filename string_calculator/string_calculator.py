@@ -9,11 +9,22 @@ def add(input):
     if (input.startswith("//")):
         (delim_part, _, nums_part) = input.partition("\n")
 
-    delims = (delim_part[2:], '\n')
+    delims = []
+    if len(delim_part) == len("//,"):
+        #remove '//'
+        delim_part = delim_part[2:]
+        delims.append(delim_part)
+    else:
+        delim_part = delim_part[2:]
+        # chop off first '[' and last ']' so that we can use split
+        delim_part = delim_part[1:-1]
+        delims.extend(delim_part.split(']['))
 
-    pat = "|".join(delims)
+    delims.append('\n')
+    for d in delims:
+        nums_part = nums_part.replace(d, ',')
 
-    nums = [n for n in [int(ns) for ns in re.split(pat, nums_part)] if n <= 1000]
+    nums = [n for n in [int(ns) for ns in nums_part.split(',')] if n <= 1000]
     
     negs = [n for n in nums if n < 0]
     if len(negs) > 0:

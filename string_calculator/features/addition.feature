@@ -72,3 +72,12 @@ Feature: Addition
     | 2,1000 | 1002 |
     | 2,1001 | 2    |
 
+  Scenario Outline: Multi-character delimiters
+    Given the input of "<input>"
+     then the sum should be <sum>
+
+   Examples:
+    | input              | sum  |
+    | //[***]\n1***2***3 | 6    |
+    | //[%%]\n1%%2%%4%%8 | 15   |
+    
