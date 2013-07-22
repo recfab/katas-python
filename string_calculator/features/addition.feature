@@ -88,5 +88,14 @@ Feature: Addition
    Examples:
     | input              | sum  |
     | //[*][%]\n1*2%3    | 6    |
-    | //[%][x]\n1x2%4x8 | 15   |
+    | //[%][x]\n1x2%4x8  | 15   |
+
+  Scenario Outline: Multiple multi-character delimiters
+    Given the input of "<input>"
+     then the sum should be <sum>
+
+   Examples:
+    | input                        | sum  |
+    | //[***][%%]\n1***2%%3        | 6    |
+    | //[:::][xyz]\n1xyz2:::4xyz8  | 15   |
     
